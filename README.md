@@ -14,6 +14,10 @@ To run this project make sure that you:
   ```bash
   pip install numpy
   ```
+- download and install `keras` with the following command via the terminal:
+  ```bash
+  pip install keras
+  ```
 - download and install `sklearn` with the following command via the terminal:
   ```bash
   pip install scikit-learn
