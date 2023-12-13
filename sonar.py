@@ -11,7 +11,7 @@ import keras
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-sonar = np.genfromtxt("sonar.csv", delimiter=",", dtype=str)
+sonar = np.genfromtxt("resources/sonar.csv", delimiter=",", dtype=str)
 
 sonar_X = sonar[:, :-1].astype(float)
 sonar_y = sonar[:, -1]
