@@ -1,10 +1,13 @@
 """
 To run this project make sure that you:
-    - download Python 3.10
+    - install Python >=3.10
+    - install Keras
+    - install Numpy
+    - install Scikit-learn
 
-    Project created by:
-        Kajetan Welc
-        Daniel Wirzba
+Project created by:
+    Kajetan Welc
+    Daniel Wirzba
 """
 
 import keras

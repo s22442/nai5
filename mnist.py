@@ -1,10 +1,14 @@
 """
 To run this project make sure that you:
-    - download Python 3.10
+    - install Python >=3.10
+    - install Keras
+    - install Numpy
+    - install Scikit-learn
+    - install Matplotlib
 
-    Project created by:
-        Kajetan Welc
-        Daniel Wirzba
+Project created by:
+    Kajetan Welc
+    Daniel Wirzba
 """
 
 import keras
@@ -45,63 +49,69 @@ class_names = [
     "Shirt",
     "Sneaker",
     "Bag",
-    "Ankle boot"]
+    "Ankle boot"
+]
 
 input_shape = train_images[0].shape
 output_shape = len(np.unique(train_labels))
 
-model_size_1 = keras.Sequential(
+model1 = keras.Sequential(
     [
         keras.layers.Flatten(input_shape=(28, 28)),
         keras.layers.Dense(128, activation="relu"),
-        keras.layers.Dense(10),
-    ]
-)
-
-model_size_2 = keras.Sequential(
-    [
-        keras.layers.Flatten(input_shape=(28, 28)),
-        keras.layers.Dense(128, activation="relu"),
-        keras.layers.Dense(128, activation="relu"),
-        keras.layers.Dense(128, activation="relu"),
-        keras.layers.Dropout(0.25),
         keras.layers.Dense(10),
         keras.layers.Softmax()
     ]
 )
 
-model_size_1.compile(
-    optimizer="adam",
-    loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-    metrics=["accuracy"],
+model2 = keras.Sequential(
+    [
+        keras.layers.Flatten(input_shape=(28, 28)),
+        keras.layers.Dense(64, activation="relu"),
+        keras.layers.Dropout(0.2),
+        keras.layers.Dense(64, activation="relu"),
+        keras.layers.Dropout(0.2),
+        keras.layers.Dense(64, activation="relu"),
+        keras.layers.Dropout(0.2),
+        keras.layers.Dense(64, activation="relu"),
+        keras.layers.Dropout(0.2),
+        keras.layers.Dense(10),
+        keras.layers.Softmax()
+    ]
 )
 
-model_size_2.compile(
+model1.compile(
     optimizer="adam",
     loss=keras.losses.SparseCategoricalCrossentropy(),
     metrics=["accuracy"],
 )
 
-model_size_1.fit(train_images, train_labels, epochs=10)
-model_size_2.fit(train_images, train_labels, epochs=10)
+model2.compile(
+    optimizer="adam",
+    loss=keras.losses.SparseCategoricalCrossentropy(),
+    metrics=["accuracy"],
+)
 
-classifier = Estimator(model_size_1, class_names)
+model1.fit(train_images, train_labels, epochs=10)
+model2.fit(train_images, train_labels, epochs=10)
+
+classifier = Estimator(model1, class_names)
 
 ConfusionMatrixDisplay.from_estimator(
     estimator=classifier, X=test_images, y=test_labels)
 
 plt.show()
 
-test_loss_1, test_acc_1 = model_size_1.evaluate(
+test_loss_1, test_acc_1 = model1.evaluate(
     test_images,
     test_labels,
     verbose=2
 )
-print("\nTest accuracy:", test_acc_1)
+print("\nTest accuracy for model A:", test_acc_1)
 
-test_loss_2, test_acc_2 = model_size_2.evaluate(
+test_loss_2, test_acc_2 = model2.evaluate(
     test_images,
     test_labels,
     verbose=2
 )
-print("\nTest accuracy:", test_acc_2)
+print("\nTest accuracy for model B:", test_acc_2)

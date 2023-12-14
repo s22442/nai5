@@ -1,10 +1,11 @@
 """
 To run this project make sure that you:
-    - download Python 3.10
+    - install Python >=3.10
+    - install Keras
 
-    Project created by:
-        Kajetan Welc
-        Daniel Wirzba
+Project created by:
+    Kajetan Welc
+    Daniel Wirzba
 """
 
 import keras
@@ -24,6 +25,7 @@ model = keras.Sequential(
         keras.layers.Dense(128, activation="relu"),
         keras.layers.Dense(128, activation="relu"),
         keras.layers.Dense(10),
+        keras.layers.Softmax(),
     ]
 )
 
