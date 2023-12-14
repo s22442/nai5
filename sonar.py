@@ -1,4 +1,6 @@
 """
+The program uses a neural network for classifying rocks and mines from the Sonar dataset (https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks).
+
 To run this project make sure that you:
     - install Python >=3.10
     - install Keras

@@ -1,4 +1,6 @@
 """
+The program uses a neural network for banknote authentication based on the Banknote Authentication dataset (https://archive.ics.uci.edu/dataset/267/banknote+authentication).
+
 To run this project make sure that you:
     - install Python >=3.10
     - install Keras

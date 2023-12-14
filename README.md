@@ -1,5 +1,12 @@
 ## 💡 About this project
 
+This is a machine learning project utilizing neural networks for different classification problems:
+
+- sonar dataset
+- MNIST dataset
+- CIFAR-10 dataset
+- banknote verification dataset
+
 Project created by:
 
 - Kajetan Welc

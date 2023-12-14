@@ -1,4 +1,6 @@
 """
+The program uses a neural network for animal classification based on the CIFAR-10 dataset.
+
 To run this project make sure that you:
     - install Python >=3.10
     - install Keras
