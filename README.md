@@ -34,11 +34,6 @@ To run this project make sure that you:
   pip install scikit-learn
   ```
 
-Project created by:
-
-- Kajetan Welc
-- Daniel Wirzba
-
 ## 🏷️ License
 
 [MIT License](https://opensource.org/licenses/MIT)
