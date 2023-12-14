@@ -21,6 +21,8 @@ model = keras.Sequential(
     [
         keras.layers.Flatten(input_shape=(32, 32, 3)),
         keras.layers.Dense(128, activation="relu"),
+        keras.layers.Dense(128, activation="relu"),
+        keras.layers.Dense(128, activation="relu"),
         keras.layers.Dense(10),
     ]
 )
