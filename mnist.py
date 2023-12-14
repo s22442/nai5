@@ -9,17 +9,16 @@ To run this project make sure that you:
 
 import keras
 import matplotlib.pyplot as plt
-from sklearn.metrics import ConfusionMatrixDisplay
 import numpy as np
+from sklearn.metrics import ConfusionMatrixDisplay
 
 
 class Estimator:
-    _estimator_type = ''
+    _estimator_type = "classifier"
     classes_ = []
 
     def __init__(self, model, classes):
         self.model = model
-        self._estimator_type = 'classifier'
         self.classes_ = classes
 
     def predict(self, x):
@@ -36,16 +35,17 @@ fashion_mnist = keras.datasets.fashion_mnist
 train_images = train_images / 255.0
 test_images = test_images / 255.0
 
-class_names = ['T-shirt/top',
-               'Trouser',
-               'Pullover',
-               'Dress',
-               'Coat',
-               'Sandal',
-               'Shirt',
-               'Sneaker',
-               'Bag',
-               'Ankle boot']
+class_names = [
+    "T-shirt/top",
+    "Trouser",
+    "Pullover",
+    "Dress",
+    "Coat",
+    "Sandal",
+    "Shirt",
+    "Sneaker",
+    "Bag",
+    "Ankle boot"]
 
 input_shape = train_images[0].shape
 output_shape = len(np.unique(train_labels))
@@ -87,11 +87,21 @@ model_size_2.fit(train_images, train_labels, epochs=10)
 
 classifier = Estimator(model_size_1, class_names)
 
-ConfusionMatrixDisplay.from_estimator(estimator=classifier, X=test_images, y=test_labels)
+ConfusionMatrixDisplay.from_estimator(
+    estimator=classifier, X=test_images, y=test_labels)
 
 plt.show()
 
-test_loss_1, test_acc_1 = model_size_1.evaluate(test_images, test_labels, verbose=2)
+test_loss_1, test_acc_1 = model_size_1.evaluate(
+    test_images,
+    test_labels,
+    verbose=2
+)
 print("\nTest accuracy:", test_acc_1)
-test_loss_2, test_acc_2 = model_size_2.evaluate(test_images, test_labels, verbose=2)
+
+test_loss_2, test_acc_2 = model_size_2.evaluate(
+    test_images,
+    test_labels,
+    verbose=2
+)
 print("\nTest accuracy:", test_acc_2)
